@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/routes/index.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,0BAA0B;AAC1B,yCAAuB;AACvB,6BAA6B","sourcesContent":["// export * from './auth';\r\nexport * from './user';\r\n// export * from './product';\r\n"]}

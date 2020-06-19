@@ -1,1 +1,0 @@
-{"version":3,"file":"action.enum.js","sourceRoot":"","sources":["../../src/constants/action.enum.ts"],"names":[],"mappings":";;;AAAA,IAAY,UAEX;AAFD,WAAY,UAAU;IAClB,6CAA8B,CAAA;AAClC,CAAC,EAFW,UAAU,GAAV,kBAAU,KAAV,kBAAU,QAErB","sourcesContent":["export enum ActionEnum {\r\n    USER_REGISTER ='user_register',\r\n}\r\n"]}

@@ -1,1 +1,1 @@
-export * from './checkIsExistEmailMeddleware';
+export * from './checkIsExistEmail.middleware';

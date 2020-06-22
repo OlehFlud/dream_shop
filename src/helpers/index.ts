@@ -1,2 +1,3 @@
 export * from './passwordHasher.helper';
-export * from './tokinizer';
+export * from './tokenVerificator.helper';
+export * from './tokinizer.helper';

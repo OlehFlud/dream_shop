@@ -18,8 +18,8 @@ export const config = {
   JWT_CONFIRM_EMAIL_SECRET: process.env.JWT_CONFIRM_EMAIL_SECRET || 'd%^&fsdnFFkmsdkfHJFAJa',
   JWT_CONFIRM_EMAIL_LIFETIME: process.env.JWT_CONFIRM_EMAIL_LIFETIME || '24h',
 
-  JWT_PASS_RESET_SECRET: process.env.JWT_PASS_RESET_SECRET || '4234&&34refFSDJNK7sdf$%^',
-  JWT_PASS_RESET_LIFETIME: process.env.JWT_PASS_RESET_LIFETIME || '24h',
+  JWT_PASS_FORGOT_SECRET: process.env.JWT_PASS_FORGOT_SECRET || '4234&&34refFSDJNK7sdf$%^',
+  JWT_PASS_FORGOT_LIFETIME: process.env.JWT_PASS_FORGOT_LIFETIME || '24h',
 
   serverRateLimits: {
     period: 15 * 60 * 1000, // 15 minutes

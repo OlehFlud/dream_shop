@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import {ActionEnum} from '../constants';
+import {ActionEnum, ResponceStatusCodeEnum} from '../constants';
 import {ErrorHandler} from '../errors';
 import {config} from '../config';
 
@@ -12,9 +12,11 @@ export const tokinizer = (action: ActionEnum): {access_token: string, refresh_to
     case ActionEnum.USER_REGISTER:
       access_token = jwt.sign({},config.JWT_CONFIRM_EMAIL_SECRET,{expiresIn: config.JWT_CONFIRM_EMAIL_LIFETIME});
       break;
-
+    case ActionEnum.FORGOT_PASSWORD:
+      access_token = jwt.sign({},config.JWT_PASS_FORGOT_SECRET,{expiresIn: config.JWT_PASS_FORGOT_LIFETIME});
+      break;
     default:
-      throw new ErrorHandler(500,'wrong action');
+      throw new ErrorHandler(ResponceStatusCodeEnum.SERVER,'wrong action');
   }
 
   return {

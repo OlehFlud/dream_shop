@@ -1,6 +1,7 @@
 import {UserModel} from '../../dataBase';
 import {IUser, IUserToken} from '../../models';
 import {Types} from 'mongoose';
+import {ActionEnum} from '../../constants';
 
 class UserService {
   createUser(user: Partial<IUser>): Promise<IUser> {
@@ -9,19 +10,45 @@ class UserService {
     return userToCreate.save();
   }
 
-  addActionToken(id: string, tokenObject: IUserToken): Promise<IUser> {
+  addActionToken(userId: string, tokenObject: IUserToken): Promise<IUser> {
     return UserModel.update(
-      {_id: Types.ObjectId(id)},
+      {_id: Types.ObjectId(userId)},
       {
         $push: {
-          tokens: tokenObject as any
+          tokens: tokenObject
         }
       }
     ) as any;
   }
 
-  findOneByParams(findObject: Partial<IUser>): Promise<IUser>| null {
+  updateUserByParams(params: Partial<IUser>, update: Partial<IUser>): Promise<IUser> {
+    return UserModel.updateOne(params, update, {new: true}) as any;
+  }
+
+  findOneByParams(findObject: Partial<IUser>): Promise<IUser> | null {
     return UserModel.findOne(findObject) as any;
+  }
+
+  findUserByActionToken(action: ActionEnum, token: string): Promise<IUser> | null {
+    return UserModel.findOne({
+      $and: [
+        {'tokens.action': action},
+        {'tokens.token': token}
+      ]
+    }) as any;
+  }
+
+  removeActionToken(action: ActionEnum, token: string): Promise<IUser> | null {
+    return UserModel.update(
+      {},
+      {
+        $pull: {
+          $and:[
+            {'tokens.token': token},
+            {'tokens.action': action}
+          ]
+        }as any
+      }) as any;
   }
 }
 
